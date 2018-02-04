@@ -9,54 +9,64 @@
     <link href="style.css" rel="stylesheet">
   </head>
 
-
 <!--------------------------------------------->
 
   <body bgcolor="white">
-    <p class="practice">
-      Welcome to my page.
-    </p>
 
-    <h2 class="darkOrange">
-      January 29, 2018
-    </h2>
+<input type="button" value="diversify me" onclick="diversify()" />
+
+    <svg height="800" width="1280">
+      <!--row 1-->
+      <rect id="1" fill="#204760" width="190.81" height="190.81"/>
+      <rect id="2" fill="#378a8c" x="190.81" width="190.81" height="190.81"/>
+      <rect id="3" fill="#e1dfd1" x="381.19" width="190.81" height="190.81"/>
+      <rect id="4" fill="#e0ad25" x="572" width="190.81" height="190.81"/>
+      <rect id="5" fill="#378a8c" x="763.34" width="190.81" height="190.81"/>
+      <rect id="6" fill="#204760" x="954.15" width="190.81" height="190.81"/>
+
+      <!--row 2-->
+      <rect id="7" fill="#378a8c" y="190.83" width="191.15" height="190.81"/>
+      <rect id="8" fill="#e1dfd1" x="190.81" y="191.15" width="190.81" height="190.81"/>
+      <rect id="9" fill="#e0ad25" x="381.19" y="191.15" width="190.81" height="190.81"/>
+      <rect id="10" fill="#204760" x="572" y="191.15" width="190.81" height="190.81"/>
+      <rect id="11" fill="#e1dfd1" x="763.34" y="191.15" width="190.81" height="190.81"/>
+      <rect id="12" fill="#378a8c" x="954.15" y="191.15" width="190.81" height="190.81"/>
+
+      <!--row 3-->
+      <rect id="13" fill="#cd5437" y="381.58" width="190.81" height="190.81"/>
+      <rect id="14" fill="#204760" x="190.81" y="381.58" width="190.81" height="190.81"/>
+      <rect id="15" fill="#204760" x="381.19" y="381.9" width="190.81" height="190.81"/>
+      <rect id="16" fill="#e0ad25" x="572" y="381.9" width="190.81" height="190.81"/>
+      <rect id="17" fill="#204760" x="763.34" y="381.9" width="190.81" height="190.81"/>
+      <rect id="18" fill="#cd5437" x="954.15" y="381.9" width="190.81" height="190.81"/>
+
+      <!--row 4-->
+      <rect id="19" fill="#204760" y="572" width="190.81" height="190.81"/>
+      <rect id="20" fill="#378a8c" x="190.81" y="572" width="190.81" height="190.81"/>
+      <rect id="21" fill="#e1dfd1" x="381.19" y="572" width="190.81" height="190.81"/>
+      <rect id="22" fill="#378a8c" x="572" y="572" width="190.81" height="190.81"/>
+      <rect id="23" fill="#e1dfd1" x="763.34" y="572" width="190.81" height="190.81"/>
+      <rect id="24" fill="#204760" x="954.15" y="572" width="190.81" height="190.81"/>
+    </svg>
 
 <!--java--------------------------------------->
     <script>
 
-      var myNumber = 42;
-      console.log(myNumber);
-      myNumber = myNumber * 3;
-      console.log(myNumber);
+    function diversify() {
+    var items = Array(1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24);
+    var item = items[Math.floor(Math.random()*items.length)];
 
-      var myString = "Practicing JavaScript";
-      console.log(myString + " and D3");
+    var colors = Array("#204760","#cd5437","#e1dfd1","#378a8c","#e0ad25");
+    var color = colors[Math.floor(Math.random()*colors.length)];
 
-      var bigNumber = myNumber > 100;
-      console.log(bigNumber);
-
-      var myArray = ["one", "two", "three", "four"];
-      console.log(myArray);
-
-      var myUser = {
-        "name": "Maria Alejandra Bazante",
-        "color": "orange",
-        "last-login": "1/29/2018"
-      };
-      console.log(myUser.name);
-      console.log(myUser["last-login"]);
-
-      var sayHello = function() {
-      console.log("Hello!");
-      }
-      sayHello();
-
-      var sayName = function(name) {
-        console.log("Hi " + name + "!");
-      }
-      sayName("Maria Alejandra");
+     document.getElementById(item).setAttribute("fill", color);
+    }
 
     </script>
+<!--java--------------------------------------->
+
+
+
   </body>
 
 

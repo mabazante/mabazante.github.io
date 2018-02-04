@@ -4,6 +4,13 @@ p {
   color: orange;
 }
 
+a {
+  color: darkGrey;
+  font-family: helvetica;
+  font-size: 12px;
+
+
+}
 
 .darkOrange{
   color: darkorange;

@@ -1,0 +1,21 @@
+<script>
+
+var myUser = {
+  "name": "Maria Alejandra Bazante",
+  "color": "orange",
+  "last-login": "1/29/2018"
+};
+console.log(myUser.name);
+console.log(myUser["last-login"]);
+
+var sayHello = function() {
+console.log("Hello!");
+}
+sayHello();
+
+var sayName = function(name) {
+  console.log("Hi " + name + "!");
+}
+sayName("Maria Alejandra");
+
+</script>
