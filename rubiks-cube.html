@@ -10,8 +10,8 @@
 
     <body id="myBody">
 
-      <div id-"Introduction">
-        <h1 font:"helvetica"> How many squares are there on a Rubiks Cube?</h1>
+      <div id="Introduction">
+        <h1 font:helvetica> How many squares are there on a Rubiks Cube?</h1>
 
       <div id="option">
         <input name="updateButton"
@@ -53,6 +53,7 @@
 
       //enterSquares
       squares.enter().append("rect")
+        .transition().duration(1000)
         .attr("class", "square")
         .attr("width", 10)
         .attr("height", 10)
@@ -60,8 +61,8 @@
           return 10 + (index * 15);
         })
         .attr("x", 10)
-        .attr("fill","white")
-        .attr("stroke","black");
+        .attr("fill","blue")
+
 
       //update
       squares
@@ -72,9 +73,6 @@
       //exit
       squares.exit().remove();
     }
-
-  //run the function
-  // drawSquares(twoByTwo);
 
   </script>
 </html>
