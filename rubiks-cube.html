@@ -1,0 +1,80 @@
+<!DOCTYPE>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Javascript Libraries</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+    <body id="myBody">
+
+      <div id-"Introduction">
+        <h1 font:"helvetica"> How many squares are there on a Rubiks Cube?</h1>
+
+      <div id="option">
+        <input name="updateButton"
+           type="button"
+           value="2x2"
+           onclick="drawSquares(twoByTwo)" />
+      </div>
+      <div id="option">
+        <input name="updateButton"
+           type="button"
+           value="3x3"
+           onclick="drawSquares(threeByThree)" />
+      </div>
+      <div id="option">
+        <input name="updateButton"
+           type="button"
+           value="4x4"
+           onclick="drawSquares(fourByFour)" />
+      </div>
+
+      <svg id="viz" height=500 width=500></svg>
+
+    </body>
+
+  <script>
+
+  //Colored Squares per Cube Size
+  var twoByTwo = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
+  var threeByThree = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3];
+  var fourByFour = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
+  var fiveByFive = [5,5,5,5,5,5];
+
+  var drawSquares = function(dataArray) {
+
+    var svg = d3.select("#viz");
+
+    var squares = svg.selectAll(".square")
+      .data(dataArray);
+
+      //enterSquares
+      squares.enter().append("rect")
+        .attr("class", "square")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("y", function(dataPoint, index) {
+          return 10 + (index * 15);
+        })
+        .attr("x", 10)
+        .attr("fill","white")
+        .attr("stroke","black");
+
+      //update
+      squares
+        .transition().duration(1000)
+        .attr("fill","white")
+        .attr("stroke","black");
+
+      //exit
+      squares.exit().remove();
+    }
+
+  //run the function
+  // drawSquares(twoByTwo);
+
+  </script>
+</html>
