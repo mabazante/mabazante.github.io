@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title> February 12 Class </title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+    <body id="myBody">
+      <svg id="viz"></svg>
+    </body>
+
+  <script>
+
+    //txt
+    d3.text("textData.txt", function(error,data) {
+      if (error) {
+        console.log("Error");
+      }
+      else {
+        console.log(data);
+      }
+    });
+
+    //csv
+    d3.csv("dataTable.csv", function(error,data) {
+      if (error) {
+        console.log("Error");
+      }
+      else {
+        console.log(data);
+      }
+    });
+
+    //json
+    d3.json("dataObject.json", function(error, data) {
+      if (error) {
+        console.log(data);
+    });
+
+
+  </script>
+</html>

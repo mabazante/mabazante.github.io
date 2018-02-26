@@ -11,7 +11,7 @@
     <body id="myBody">
 
       <div id="Introduction">
-        <h1 font:helvetica> How many squares are there on a Rubiks Cube?</h1>
+        <h1> How many squares are there on a Rubiks Cube?</h1>
 
       <div id="option">
         <input name="updateButton"
@@ -32,7 +32,7 @@
            onclick="drawSquares(fourByFour)" />
       </div>
 
-      <svg id="viz" height=500 width=500></svg>
+      <svg id="viz" height=2000 width=1000></svg>
 
     </body>
 
@@ -61,8 +61,7 @@
           return 10 + (index * 15);
         })
         .attr("x", 10)
-        .attr("fill","blue")
-
+        .attr("fill","blue");
 
       //update
       squares
@@ -71,7 +70,11 @@
         .attr("stroke","black");
 
       //exit
-      squares.exit().remove();
+      squares.exit()
+      .transition().duration(1000)
+      .attr("fill","blue")
+      .attr("stroke","black")
+      .remove();
     }
 
   </script>
