@@ -27,9 +27,23 @@
     var svg = d3.select("#viz")
       .attr("width", window.innerWidth)
       .attr("height", window.innerHeight)
+      .append("g")
+      .attr("transform", "translate(110,110)")
+
+    //Make a scale for circles
+    var radiusScale = d3.scaleSqrt().domain([1,674]).range([10,80])
 
     //Start simulation (collection of forces)
     var simulation = d3.forceSimulation()
+      //create a force .force("name of it", define it)
+      //Moving them to center of SVG
+      .force("x", d3.forceX(0).strength(.05))
+      .force("y", d3.forceY(0).strength(.05))
+      //Keep them from colliding (radius of the area that we want
+      //collision to avoid)
+      .force("noCollision", d3.forceCollide(function (d) {
+        return radiusScale(d.numberTalks) + 5;
+      }))
 
     //Create queue and function to run viz
     d3.queue()
@@ -44,15 +58,17 @@
         .data(tagnames);
       circles.enter().append("circle")
         .attr("class", "tag")
-        .attr("r", 40)
-        .attr("fill", "lightblue")
+        .attr("r", function(d) {
+          return radiusScale(d.numberTalks)
+        })
+        .attr("fill", "#e62b1e")
 
       //Feed simualtion the data
       simulation.nodes(tagnames)
         .on('tick', ticked)
 
       //Control the tick - updates data points with cx and cy
-      function ticked () {
+      function ticked (d) {
         circles
           .attr("cx", function (d) {
             return d.x
