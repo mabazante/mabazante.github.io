@@ -38,10 +38,10 @@
 
     //Function to create viz
     function ready ( error, tagnames ) {
-      //console.log(tagnames)
+      console.log(tagnames)
 
       var circles = svg.selectAll("circles")
-        .data(tagnames)
+        .data(tagnames);
       circles.enter().append("circle")
         .attr("class", "tag")
         .attr("r", 40)
@@ -49,7 +49,7 @@
 
       //Feed simualtion the data
       simulation.nodes(tagnames)
-        .on("tick", ticked)
+        .on('tick', ticked)
 
       //Control the tick - updates data points with cx and cy
       function ticked () {
