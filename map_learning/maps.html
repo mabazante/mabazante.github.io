@@ -9,13 +9,64 @@
   </head>
 
   <body>
+    <svg id="map" width=800 height=600>
+      <rect width=800 height=600 fill="lightgrey">
+
+    </svg>
+
     <script>
 
-      d3.csv("world.json", function (error, data) {
-          console.log(data);
-      });
-    </script>
+      d3.json("world.json", function (error, data) {
 
+          var geoJSON = topojson.feature(data, data.objects.countries);
+
+          geoJSON.features = geoJSON.features.filter(function(feature) {
+            return feature.id != "AQ";
+
+          });
+
+          var proj = d3.geoMercator()
+            .fitSize([800,600], geoJSON);
+
+          var path = d3.geoPath()
+            .projection(proj);
+
+          var countries = d3.select("#map").selectAll("path")
+            .data(geoJSON.features);
+
+          countries.enter().append("path")
+            .attr("fill", function(feature) {
+              if (feature.id == "US") {
+                return "silver";
+              }
+              else {
+                return "darkGrey";
+              }
+            })
+            .attr("stroke", "white")
+            .attr("stroke-width", 0.2)
+            .attr("d", function(feature) {
+              return path(feature);
+            });
+
+          var points = [
+            {"name": "Boston", "coords": [-71.0589, 42.3601]},
+            {"name": "London", "coords": [-0.1278, 51.5074]}
+          ];
+
+          var dots = svg.selectAll("circle")
+            .data(points);
+
+          dots.enter().append("circle")
+            .attr("transform", function(point){
+              return "translate(" + proj(point.coords) + ")";
+            })
+            .attr("fill", "black")
+            .attr("r", "2");
+
+          });
+
+    </script>
 
   </body>
 

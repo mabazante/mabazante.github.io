@@ -1,0 +1,478 @@
+id,tagName,numberTalks
+1,technology ,674
+2,science ,512
+3,culture ,482
+4,global issues ,475
+5,design ,394
+6,TEDx ,392
+7,business ,332
+8,entertainment ,294
+9,health ,201
+10,art ,193
+11,education ,192
+12,innovation ,183
+13,creativity ,177
+14,politics ,176
+15,biology ,169
+16,social change ,158
+17,future ,157
+18,economics ,151
+19,brain ,148
+20,environment ,145
+21,medicine ,144
+22,collaboration ,140
+23,society ,137
+24,communication,135
+25,activism,131
+26,TED Fellows,130
+27,music,129
+28,invention,127
+29,history,126
+30,health care,115
+31,storytelling,114
+32,children,113
+33,cities,112
+34,humanity,112
+35,psychology,108
+36,community,107
+37,performance,105
+38,humor,103
+39,war,102
+40,engineering,101
+41,animals,99
+42,women,98
+43,computers,97
+44,life,96
+45,exploration,91
+46,photography,90
+47,Africa,90
+48,nature,90
+49,neuroscience,82
+50,identity,82
+51,medical research,81
+52,data,79
+53,visualizations,77
+54,leadership,77
+55,sustainability,77
+56,Internet,75
+57,architecture,74
+58,climate change,73
+59,physics,72
+60,government,72
+61,oceans,71
+62,green,70
+63,inequality,69
+64,happiness,68
+65,disease,67
+66,live music,66
+67,evolution,66
+68,biotech,65
+69,media,64
+70,mind,64
+71,film,63
+72,work,63
+73,philosophy,61
+74,personal growth,60
+75,potential,59
+76,big problems,58
+77,space,57
+78,violence,57
+79,biodiversity,56
+80,TED Brain Trust,55
+81,poverty,55
+82,food,55
+83,global development,55
+84,math,54
+85,genetics,54
+86,cognitive science,53
+87,entrepreneur,53
+88,language,52
+89,Beauty,52
+90,energy,51
+91,mental health,51
+92,religion,51
+93,ecology,51
+94,demo,50
+95,writing,50
+96,robots,49
+97,motivation,49
+98,peace,49
+99,comedy,48
+100,poetry,47
+101,universe,45
+102,self,45
+103,astronomy,44
+104,law,43
+105,infrastructure,42
+106,adventure,42
+107,software,41
+108,web,41
+109,social media,41
+110,crime,41
+111,journalism,41
+112,public health,40
+113,product design,40
+114,illness,40
+115,science and art,39
+116,DNA,38
+117,youth,38
+118,choice,38
+119,democracy,38
+120,alternative energy,37
+121,cancer,37
+122,relationships,37
+123,aging,37
+124,policy,37
+125,transportation,35
+126,death,35
+127,open-source,34
+128,books,34
+129,intelligence,34
+130,parenting,34
+131,philanthropy,33
+132,sex,33
+133,family,33
+134,decision-making,33
+135,agriculture,33
+136,love,32
+137,insects,32
+138,disability,32
+139,teaching,32
+140,materials,32
+141,race,31
+142,water,31
+143,security,31
+144,sports,30
+145,chemistry,30
+146,money,30
+147,AI,30
+148,goal-setting,29
+149,terrorism,29
+150,molecular biology,29
+151,microbiology,29
+152,industrial design,28
+153,gaming,28
+154,pollution,28
+155,compassion,28
+156,interface design,27
+157,investment,27
+158,Planets,27
+159,fish,27
+160,curiosity,27
+161,Middle East,27
+162,Asia,26
+163,TED Prize,25
+164,statistics,25
+165,feminism,25
+166,TEDYouth,25
+167,women in business,25
+168,plants,25
+169,success,24
+170,urban planning,24
+171,dance,23
+172,online video,23
+173,memory,23
+174,consciousness,23
+175,depression,23
+176,biomimicry,22
+177,consumerism,22
+178,gender,22
+179,code,22
+180,mission blue,22
+181,nanoscale,22
+182,fear,22
+183,disaster relief,22
+184,faith,21
+185,anthropology,21
+186,Senses,21
+187,sociology,21
+188,algorithm,21
+189,garden,21
+190,bacteria,21
+191,bioethics,21
+192,corruption,20
+193,military,20
+194,marketing,20
+195,illusion,20
+196,china,20
+197,pharmaceuticals,20
+198,behavioral economics,20
+199,United States,20
+200,sight,20
+201,cars,19
+202,empathy,19
+203,productivity,19
+204,NASA,19
+205,physiology,19
+206,biomechanics,19
+207,magic,18
+208,literature,18
+209,complexity,18
+210,morality,18
+211,ancient world,18
+212,prosthetics,17
+213,programming,17
+214,performance art,17
+215,drones,17
+216,prison,17
+217,Europe,17
+218,cosmos,16
+219,library,16
+220,sound,16
+221,time,16
+222,world cultures,16
+223,map,15
+224,AIDS,15
+225,God,15
+226,toy,15
+227,theater,15
+228,play,15
+229,india,15
+230,animation,15
+231,speech,15
+232,piano,15
+233,simplicity,14
+234,guitar,14
+235,spoken word,14
+236,solar system,14
+237,flight,14
+238,presentation,14
+239,virtual reality,14
+240,finance,14
+241,conservation,14
+242,privacy,14
+243,singer,14
+244,botany,14
+245,trees,14
+246,machine learning,14
+247,natural resources,14
+248,personality,14
+249,heart health,13
+250,extraterrestrial life,13
+251,dark matter,13
+252,prediction,13
+253,interview,13
+254,weather,13
+255,LGBT,13
+256,failure,13
+257,synthetic biology,13
+258,sanitation,13
+259,Egypt,13
+260,MacArthur grant,12
+261,museums,12
+262,fashion,12
+263,news,12
+264,population,12
+265,work-life balance,12
+266,Surgery,12
+267,TED Books,12
+268,microbes,12
+269,bees,11
+270,Vaccines,11
+271,solar energy,11
+272,birds,11
+273,iraq,11
+274,protests,11
+275,medical imaging,11
+276,body language,11
+277,obesity,10
+278,Brazil,10
+279,travel,10
+280,natural disaster,10
+281,String theory,10
+282,Google,10
+283,hack,10
+284,submarine,10
+285,paleontology,10
+286,virus,10
+287,advertising,10
+288,Slavery,10
+289,composing,10
+290,public spaces,10
+291,solar,10
+292,human origins,9
+293,plastic,9
+294,dinosaurs,9
+295,yesallwomen,9
+296,Autism spectrum disorder,9
+297,Islam,9
+298,crowdsourcing,9
+299,nuclear energy,9
+300,TED-Ed,9
+301,Mars,9
+302,big bang,9
+303,New York,8
+304,wikipedia,8
+305,telecom,8
+306,suicide,8
+307,smell,8
+308,charter for compassion,8
+309,Buddhism,8
+310,men,8
+311,ebola,8
+312,immigration,8
+313,rocket science,8
+314,urban,8
+315,narcotics,7
+316,conducting,7
+317,shopping,7
+318,extreme sports,7
+319,Foreign Policy,7
+320,deextinction,7
+321,pain,7
+322,archaeology,7
+323,TEDMED,7
+324,mobility,7
+325,vocals,7
+326,transgender,7
+327,discovery,7
+328,painting,7
+329,violin,6
+330,typography,6
+331,Latin America,6
+332,wind energy,6
+333,student,6
+334,monkeys,6
+335,Debate,6
+336,cyborg,6
+337,capitalism,6
+338,gender spectrum,6
+339,geology,6
+340,meditation,6
+341,farming,6
+342,bullying,6
+343,aircraft,5
+344,primates,5
+345,wunderkind,5
+346,atheism,5
+347,meme,5
+348,state-building,5
+349,Iran,5
+350,exoskeleton,5
+351,pregnancy,5
+352,television,5
+353,trafficking,5
+354,hearing,5
+355,One Laptop Per Child,4
+356,Christianity,4
+357,oil,4
+358,glacier,4
+359,jazz,4
+360,Nobel Prize,4
+361,guns,4
+362,mindfulness,4
+363,microfinance,4
+364,South America,4
+365,gender equality,4
+366,resources,4
+367,HIV,4
+368,biosphere,4
+369,refugees,4
+370,apes,3
+371,ants,3
+372,cello,3
+373,microsoft,3
+374,novel,3
+375,nuclear weapons,3
+376,3D printing,3
+377,mining,3
+378,pandemic,3
+379,street art,3
+380,PTSD,3
+381,Brand,3
+382,addiction,3
+383, biomechanics,3
+384, technology,3
+385, innovation,3
+386, Biology,3
+387, biotech,3
+388, nature,3
+389,Moon,2
+390,evil,2
+391,origami,2
+392,forensics,2
+393,sleep,2
+394,vulnerability,2
+395,arts,2
+396,augmented reality,2
+397, science,2
+398, Biodiversity,2
+399,manufacturing,2
+400,development,2
+401, communication,2
+402, DNA,2
+403,friendship,2
+404,criminal justice,2
+405,driverless cars,2
+406, future,2
+407, farming,2
+408,trust,2
+409, Life,2
+410, Plants,2
+411,skateboarding,1
+412,testing,1
+413,cloud,1
+414,grammar,1
+415, live music,1
+416, love,1
+417,blockchain,1
+418, music,1
+419, relationships,1
+420, performance,1
+421, design,1
+422, terrorism,1
+423, happiness,1
+424,funny,1
+425, singer,1
+426, brain,1
+427, Biosphere,1
+428, war,1
+429, exploration,1
+430,nonviolence,1
+431, vocals,1
+432, chemistry,1
+433, Botany,1
+434, web,1
+435, disease,1
+436, adventure,1
+437, genetics,1
+438, humanity,1
+439, violence,1
+440, gaming,1
+441, collaboration,1
+442, illness,1
+443, Community,1
+444, society,1
+445, cancer,1
+446, humor,1
+447, medical research,1
+448, Ecology,1
+449, democracy,1
+450, math,1
+451, animals,1
+452, nanoscale,1
+453, Environment,1
+454, social media,1
+455, garden,1
+456, Green,1
+457, Internet,1
+458, Vaccines,1
+459, curiosity,1
+460,gay,1
+461, evolution,1
+462, Identity,1
+463, Middle East,1
+464, agriculture,1
+465, funny,1
+466,Surveillance,1
+467, Language,1
+468, protests,1
+469, security,1
+470, molecular biology,1
+471, personality,1
+472, materials,1
+473, privacy,1
+474, forensics,1
+475, friendship,1
+476, Trees,1
+477, books,1
