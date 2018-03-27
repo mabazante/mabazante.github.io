@@ -10,6 +10,20 @@
     <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
     <script src="https://d3js.org/d3-timer.v1.min.js"></script>
     <script src="https://d3js.org/d3-force.v1.min.js"></script>
+
+
+    <style>
+      #tooltip {
+        background-color: none;
+        border: none;
+        position: absolute;
+        padding: 2px;
+        font-family: "Helvetica";
+        font-size: 5px;
+      }
+
+    </style>
+
   </head>
 
 
@@ -18,27 +32,35 @@
     <!--Draw SVG DIV-->
     <svg id="viz"></svg>
 
+    <!--Add tooltip-->
+    <div id="tooltip"></div>
 
+    <!--Start Script-->
     <script>
 
-    var width = window.innerWidth/2,
-        height = window.innerHeight/2;
+    var width = window.innerWidth,
+        height = window.innerHeight;
 
     var svg = d3.select("#viz")
-      .attr("width", window.innerWidth)
-      .attr("height", window.innerHeight)
+      .attr("width", width)
+      .attr("height", height)
       .append("g")
-      .attr("transform", "translate(110,110)")
+      .attr("transform", "translate(0,0)")
+
+    //Text
 
     //Make a scale for circles
-    var radiusScale = d3.scaleSqrt().domain([1,674]).range([10,80])
+    var radiusScale = d3.scaleSqrt().domain([1,674]).range([.5,45])
+
+    //Make a scale for reds
+    //*******Need to do this
 
     //Start simulation (collection of forces)
     var simulation = d3.forceSimulation()
       //create a force .force("name of it", define it)
       //Moving them to center of SVG
-      .force("x", d3.forceX(0).strength(.05))
-      .force("y", d3.forceY(0).strength(.05))
+      .force("xCenter", d3.forceX(width/2).strength(.05))
+      .force("yCenter", d3.forceY(height/2).strength(.05))
       //Keep them from colliding (radius of the area that we want
       //collision to avoid)
       .force("noCollision", d3.forceCollide(function (d) {
@@ -54,14 +76,23 @@
     function ready ( error, tagnames ) {
       console.log(tagnames)
 
-      var circles = svg.selectAll("circles")
+      //Change the numberTalks to numbers not strings
+      tagnames.forEach(function(talk) {
+        talk.numberTalks = parseFloat(talk.numberTalks);
+      });
+
+
+      var updatingCircles = svg.selectAll("circles")
         .data(tagnames);
-      circles.enter().append("circle")
+
+      var enteringCircles = updatingCircles.enter().append("circle")
         .attr("class", "tag")
         .attr("r", function(d) {
           return radiusScale(d.numberTalks)
         })
-        .attr("fill", "#e62b1e")
+        .attr("fill", "#e62b1e");
+
+      var circles = updatingCircles.merge(enteringCircles);
 
       //Feed simualtion the data
       simulation.nodes(tagnames)

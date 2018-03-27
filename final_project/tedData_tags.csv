@@ -1,27 +1,27 @@
 id,tagName,numberTalks
-1,technology ,674
-2,science ,512
-3,culture ,482
-4,global issues ,475
-5,design ,394
-6,TEDx ,392
-7,business ,332
-8,entertainment ,294
-9,health ,201
-10,art ,193
-11,education ,192
-12,innovation ,183
-13,creativity ,177
-14,politics ,176
-15,biology ,169
-16,social change ,158
-17,future ,157
-18,economics ,151
-19,brain ,148
-20,environment ,145
-21,medicine ,144
-22,collaboration ,140
-23,society ,137
+1,technology,674
+2,science,512
+3,culture,482
+4,global issues,475
+5,design,394
+6,TEDx,392
+7,business,332
+8,entertainment,294
+9,health,201
+10,art,193
+11,education,192
+12,innovation,183
+13,creativity,177
+14,politics,176
+15,biology,169
+16,social change,158
+17,future,157
+18,economics,151
+19,brain,148
+20,environment,145
+21,medicine,144
+22,collaboration,140
+23,society,137
 24,communication,135
 25,activism,131
 26,TED Fellows,130
