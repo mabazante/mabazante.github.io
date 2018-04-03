@@ -13,6 +13,10 @@
 
 
     <style>
+
+      #logo {
+        padding-bottom: none;
+      }
       #tooltip {
         background-color: #e62b1e;
         position: center;
@@ -21,14 +25,14 @@
         padding-top: 10px;
         padding-bottom: 10px;
         font-family: "Helvetica";
-        font-size: 20px;
+        font-size: 15px;
         color: white;
       }
-
       #explainer {
         padding-left: 40px;
         padding-top: none;
-        padding-bottom: 40px;
+        padding-bottom: 10px;
+        padding-right: none;
         font-family: "Helvetica";
         font-size: 12px;
         background-color: none;
@@ -37,7 +41,6 @@
     </style>
 
   </head>
-
 
   <body>
 
@@ -49,7 +52,7 @@
     </div>
 
     <!--Add tooltip-->
-    <div id="tooltip"></div>
+    <div id="tooltip" width="window.innerWidth"></div>
 
     <!--Draw SVG DIV-->
     <svg id="viz"></svg>
@@ -67,7 +70,7 @@
       .attr("transform", "translate(0,0)")
 
     //Make a scale for circles
-    var radiusScale = d3.scaleSqrt().domain([1,674]).range([.5,35])
+    var radiusScale = d3.scaleSqrt().domain([1,674]).range([2,35])
 
     //Start simulation (collection of forces)
     var simulation = d3.forceSimulation()
@@ -78,13 +81,16 @@
       //Keep them from colliding (radius of the area that we want
       //collision to avoid)
       .force("noCollision", d3.forceCollide(function (d) {
-        return radiusScale(d.numberTalks) + 5;
+        return radiusScale(d.numberTalks) + 2;
       }))
 
     //Create queue and function to run viz
     d3.queue()
       .defer(d3.csv, "tedData_tags.csv")
+      //.defer(d3.csv, "tedData_raw.csv")
       .await(ready);
+
+    //Set Up the second data Set
 
     //Function to create viz
     function ready ( error, tagnames ) {
@@ -108,9 +114,9 @@
       var circles = updatingCircles.merge(enteringCircles)
       .on("mouseenter", function(d) {
         d3.select(this)
-          .style("fill", "black")
+          .style("fill", "#bf1c11")
           .attr("r", function(d) {
-            return radiusScale(d.numberTalks *2)
+            return radiusScale(d.numberTalks * 1.2)
           })
         d3.select("#tooltip")
             .style("display", "block")
@@ -139,9 +145,13 @@
           })
       }
 
-      //Drag the nodes functions
-
+      //Click to filter the other data file
+      function clicked (links) {
+        var links = 
+      }
     }
+
+      //Loading and filtering link data
 
     </script>
 
