@@ -18,12 +18,13 @@
         padding-bottom: none;
       }
       #tooltip {
+        height: 40px;
         background-color: #e62b1e;
         position: center;
         border: none;
         padding-left: 40px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         font-family: "Helvetica";
         font-size: 15px;
         color: white;
@@ -52,7 +53,7 @@
     </div>
 
     <!--Add tooltip-->
-    <div id="tooltip" width="window.innerWidth"></div>
+    <div id="tooltip"></div>
 
     <!--Draw SVG DIV-->
     <svg id="viz"></svg>
@@ -87,14 +88,13 @@
     //Create queue and function to run viz
     d3.queue()
       .defer(d3.csv, "tedData_tags.csv")
-      //.defer(d3.csv, "tedData_raw.csv")
+      .defer(d3.csv, "tedData_raw.csv")
       .await(ready);
 
     //Set Up the second data Set
 
     //Function to create viz
-    function ready ( error, tagnames ) {
-      console.log(tagnames)
+    function ready( error, tagnames, rawdata ) {
 
       //Change the numberTalks to numbers not strings
       tagnames.forEach(function(talk) {
@@ -119,16 +119,18 @@
             return radiusScale(d.numberTalks * 1.2)
           })
         d3.select("#tooltip")
-            .style("display", "block")
-            .text(d.tagName);
+            .html("<b>" + d.tagName + "</b><br>" + d.numberTalks);
       })
       .on("mouseleave", function(d) {
         d3.select(this)
           .style("fill", "#e62b1e")
           .attr("r", function(d) {
             return radiusScale(d.numberTalks)
-          })
+          });
+          d3.select("#tooltip")
+              .html("");
       })
+      .on("click", clicked);
 
       //Feed simualtion the data
       simulation.nodes(tagnames)
@@ -146,12 +148,25 @@
       }
 
       //Click to filter the other data file
-      function clicked (links) {
-        var links = 
-      }
-    }
+      var tagNumbers = d3.range(1, 28, 1);
+      function clicked (d) {
+        console.log(d);
+        var talks = rawdata.filter(function(r) {
+          var tags = tagNumbers.map(function(t) {
+            return r["tag_" + t].toLowerCase();
+          });
+          return tags.indexOf(d.tagName.toLowerCase()) >= 0;
+        });
+        console.log(talks);
+        // add talks to div
+        // d3.select("#list").selectAll("*").remove();
+        // talks.forEach(function(talk) {
 
-      //Loading and filtering link data
+        // })
+        // d3.select("#list").append("div").html();
+      }
+
+    }
 
     </script>
 
