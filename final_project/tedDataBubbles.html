@@ -39,6 +39,16 @@
         background-color: none;
       }
 
+      #links {
+        height: 20px;
+        padding-left: 40px;
+        padding-top: none;
+        padding-bottom: 10px;
+        padding-right: none;
+        font-family: "Helvetica";
+        font-size: 12px;
+        background-color: none;
+      }
     </style>
 
   </head>
@@ -55,8 +65,13 @@
     <!--Add tooltip-->
     <div id="tooltip"></div>
 
+    <!--Add where the links will be listed-->
+    <div id="links"></div>
+
     <!--Draw SVG DIV-->
     <svg id="viz"></svg>
+
+
 
     <!--Start Script-->
     <script>
@@ -158,15 +173,11 @@
           return tags.indexOf(d.tagName.toLowerCase()) >= 0;
         });
         console.log(talks);
-        // add talks to div
-        // d3.select("#list").selectAll("*").remove();
-        // talks.forEach(function(talk) {
-
-        // })
-        // d3.select("#list").append("div").html();
+        d3.select("#links")
+            .html("Talk: " + d.speaker + "Event: " + r.event);
       }
-
     }
+
 
     </script>
 
