@@ -28,26 +28,32 @@
         font-family: "Helvetica";
         font-size: 15px;
         color: white;
+        max-width: 250px;
+        align: center;
+        left: 10px;
       }
       #explainer {
+        text-align: center;
         padding-left: 40px;
         padding-top: none;
-        padding-bottom: 10px;
+        padding-bottom: 200px;
         padding-right: none;
         font-family: "Helvetica";
-        font-size: 12px;
+        font-size: 150%;
         background-color: none;
       }
 
       #links {
-        height: 20px;
+        max-height: 500px;
+        max-width: 250px;
         padding-left: 40px;
-        padding-top: none;
-        padding-bottom: 10px;
+        padding-top: 40px;
+        padding-bottom: 40px;
         padding-right: none;
         font-family: "Helvetica";
-        font-size: 12px;
+        font-size: 10px;
         background-color: none;
+        position: absolute;
       }
     </style>
 
@@ -56,17 +62,19 @@
   <body>
 
     <div id="logo">
-      <img src="https://pi.tedcdn.com/r/pl.tedcdn.com/social/ted-logo-fb.png?v=wAff13s?" alt="" style="width:20%", height="90%">
+      <img src="https://pi.tedcdn.com/r/pl.tedcdn.com/social/ted-logo-fb.png?v=wAff13s?" alt="" style="height:innerHeight">
     </div>
-    <div id="explainer">
-      Explore more than 2,000 Ted talks to learn about the topics.
+    <div id="explainer" style="width:innerWidth">
+      </br>
+      Explore more than 2,000 Ted talks to learn about the topics. </br>
+      If any spark your curiousity you can go ahead and watch them too.
     </div>
 
     <!--Add tooltip-->
     <div id="tooltip"></div>
 
     <!--Add where the links will be listed-->
-    <div id="links"></div>
+    <div id="links" style="overflow:scroll;"></div>
 
     <!--Draw SVG DIV-->
     <svg id="viz"></svg>
@@ -134,7 +142,7 @@
             return radiusScale(d.numberTalks * 1.2)
           })
         d3.select("#tooltip")
-            .html("<b>" + d.tagName + "</b><br>" + d.numberTalks);
+            .html("</b><br>" +"" + d.tagName + "</b><br>" + "" + "</b><br>");
       })
       .on("mouseleave", function(d) {
         d3.select(this)
@@ -142,8 +150,8 @@
           .attr("r", function(d) {
             return radiusScale(d.numberTalks)
           });
-          d3.select("#tooltip")
-              .html("");
+          //d3.select("#tooltip")
+            //  .html("");
       })
       .on("click", clicked);
 
@@ -171,10 +179,13 @@
             return r["tag_" + t].toLowerCase();
           });
           return tags.indexOf(d.tagName.toLowerCase()) >= 0;
-        });
+        })
         console.log(talks);
-        d3.select("#links")
-            .html("Talk: " + talks.speaker + "Event: " + talks.event);
+        d3.select("#links").selectAll("*").remove();
+          talks.forEach(function(talk) {
+            d3.select("#links").append("talk")
+            .html("<b>" + talk.headline + "</b><br>" + "<i>" + talk.description + "</i><br>" + "</b><br>" + "Watch: " + talk.url + "</b><br>" + "</b><br>" + "</b><br>");
+        });
       }
     }
 
