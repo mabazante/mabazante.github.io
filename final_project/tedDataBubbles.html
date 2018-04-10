@@ -14,82 +14,117 @@
 
     <style>
 
-      #logo {
-        padding-bottom: none;
-        position: absolute;
+
+      a {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
       }
-      #tooltip {
+      a:visited {
+        color: gray;
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #e62b1e;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      #explainer {
+        text-align: right;
+        font-family: "Helvetica";
+        font-size: 12px;
+        background-color: white;;
+        position: fixed;
+        top: 20px;
+        right: 80px;
+        display: block;
+      }
+
+      #left-container {
+        position: fixed;
+        left: 80px;
+        top: 100px;
+      }
+
+      #right-container {
+        position: fixed;
+        right: 80px;
+        top: 220px;
+      }
+
+      #svg-container {
+        position: fixed;
+        top: 80px;
+        left: -150px;
+      }
+
+      #tooltipRight {
         background-color: #e62b1e;
-        position: center;
-        border: none;
-        padding-left: 40px;
-        padding-top: 20px;
-        padding-bottom: 5px;
+        padding-left: 20px;
         font-family: "Helvetica";
         font-size: 16px;
         color: white;
-        max-width: 250px;
-        align: center;
-        left: 40px;
+        height: 50px;
       }
-      #blank {
-        height: 10px;
-        max-width: 250px;
-        background-color: white;
 
-      }
-      #explainer {
-        text-align: right;
-        padding-left: 40px;
-        padding-top: none;
-        padding-bottom: 10px;
-        padding-right: none;
+      #tooltipLeft {
+        background-color: #bf1c11;
+        padding-left: 20px;
         font-family: "Helvetica";
-        font-size: 12px;
-        background-color: none;
-        position: absolute;
+        font-size: 16px;
+        color: white;
+        height: 50px;
+        width: 340px;
       }
 
       #links {
-        max-height: 500px;
-        max-width: 250px;
-        padding-left: 40px;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        padding-right: none;
+        height: 300px;
+        max-width: 340px;
+        padding:10px;
         font-family: "Helvetica";
-        font-size: 10px;
-        background-color: none;
-        position: absolute;
+        font-size: 12px;
+        background-color: white;
+        text-align: left;
       }
+
+      .talk-description {
+        font-style: italic;
+      }
+
     </style>
 
   </head>
 
   <body>
-    <!--
-    <div id="logo">
-      <img src="https://pi.tedcdn.com/r/pl.tedcdn.com/social/ted-logo-fb.png?v=wAff13s?" alt="" style="width:20%">
+
+    <!--Draw SVG DIV-->
+    <div id="svg-container">
+      <svg id="viz"></svg>
     </div>
-  -->
-    <div id="explainer" style="width:innerWidth">
+
+    <!--Intro and Logo-->
+    <div id="explainer">
       <img src="https://pi.tedcdn.com/r/pl.tedcdn.com/social/ted-logo-fb.png?v=wAff13s?" alt="" style="width:20%">
       </br>
       Explore more than 2,000 Ted talks to learn about the topics. </br>
       If any spark your curiousity you can go ahead and watch them too.
     </div>
 
-    <!--Add tooltip-->
-    <div id="tooltip"></div>
+    <!--<div id="right-container">
+    </div>-->
 
-    <!--Blank tooltip-->
-    <div id="white"></div>
-
-    <!--Add where the links will be listed-->
-    <div id="links" style="overflow:scroll;"></div>
-
-    <!--Draw SVG DIV-->
-    <svg id="viz"></svg>
+    <div id="right-container">
+      <!--Chosen topic-->
+      <div id="tooltipLeft"></div>
+      <div style="background-color:white; height: 10px;"></div>
+      <!--Add where the links will be listed-->
+      <div id="links" style="overflow:scroll;"></div>
+      <div style="background-color:white; height: 10px;"></div>
+      <!--Hovering topic-->
+      <div id="tooltipRight"></div>
+    </div>
 
 
 
@@ -126,7 +161,6 @@
       .defer(d3.csv, "tedData_raw.csv")
       .await(ready);
 
-    //Set Up the second data Set
 
     //Function to create viz
     function ready( error, tagnames, rawdata ) {
@@ -147,14 +181,18 @@
         .attr("fill", "#e62b1e");
 
       var circles = updatingCircles.merge(enteringCircles)
-      .on("mouseenter", function(d) {
+      .on("mousemove", function(d) {
+        //var mouseX = d3.event.pageX;
+        //var mouseY = d3.event.pageY;
+        //console.log(mouseX,mouseY);
+
         d3.select(this)
           .style("fill", "#bf1c11")
           .attr("r", function(d) {
             return radiusScale(d.numberTalks * 1.2)
           })
-        d3.select("#tooltip")
-            .html("</b><br>" +"" + d.tagName + "</b><br>" + "" + "</b><br>");
+        d3.select("#tooltipRight")
+            .html("</b><br>" + "" + d.tagName + "</b><br>" + "" + "</b><br>");
       })
       .on("mouseleave", function(d) {
         d3.select(this)
@@ -162,8 +200,8 @@
           .attr("r", function(d) {
             return radiusScale(d.numberTalks)
           });
-          //d3.select("#tooltip")
-            //  .html("");
+          d3.select("#tooltipRight")
+             .html("");
       })
       .on("click", clicked);
 
@@ -193,11 +231,15 @@
           return tags.indexOf(d.tagName.toLowerCase()) >= 0;
         })
         console.log(talks);
+
         d3.select("#links").selectAll("*").remove();
           talks.forEach(function(talk) {
             d3.select("#links").append("talk")
-            .html("<b>" + talk.headline + "</b><br>" + "<i>" + talk.description + "</i><br>" + "</b><br>" + "Watch: " + talk.url + "</b><br>" + "</b><br>" + "</b><br>");
+            .html("<b>" + talk.headline + "</b><br>" + "<span class='talk-description'>" + talk.description + "</span><br>" + "</b><br>Watch: <a target='_blank' href='" + talk.url + "'>" + talk.url + "</a>" + "</b><br>" + "</b><br>" + "</b><br>");
         });
+
+        d3.select("#tooltipLeft")
+            .html("</b><br>" + "" + d.tagName + "</b><br>" + "" + "</b><br>");
       }
     }
 
